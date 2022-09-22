@@ -1,7 +1,7 @@
-package BoardGame;
+package BoardGame.Player;
 
-public class Player {
-    private String name;
+public abstract class Player {
+    protected String name;
     public Player(){
         name=new String("Player");
     }
@@ -17,4 +17,6 @@ public class Player {
     public String getName() {
         return name;
     }
+
+    public abstract boolean ValidMove(int x,int y);
 }

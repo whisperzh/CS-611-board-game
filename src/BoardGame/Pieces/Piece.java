@@ -1,6 +1,6 @@
 package BoardGame.Pieces;
 
-import BoardGame.Player;
+import BoardGame.Player.Player;
 
 public abstract class Piece {
     public Piece(){}
