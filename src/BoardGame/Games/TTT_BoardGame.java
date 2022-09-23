@@ -1,13 +1,9 @@
 package BoardGame.Games;
 
-import BoardGame.Pieces.Piece;
 import BoardGame.Pieces.TTT_Piece;
-import BoardGame.Player.Player;
 import BoardGame.Player.TTT_Player;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class TTT_BoardGame extends BoardGame{
     public TTT_BoardGame(){
@@ -23,19 +19,38 @@ public class TTT_BoardGame extends BoardGame{
 
     @Override
     public void constructLogicGrid() {
-        boardLogicGrid=new ArrayList<List<Piece>>();
+        boardLogicGrid=new TTT_Piece[size][size];
         for(int i=0;i<size;i++)
         {
-            boardLogicGrid.add(new ArrayList<Piece>());
             for(int j=0;j<size;j++)
-                boardLogicGrid.get(i).add(new TTT_Piece());
+                boardLogicGrid[i][j]=new TTT_Piece();
         }
 
     }
+    private boolean Valid(int x,int y){
+        if(boardLogicGrid[x][y].isOcupied())
+        {
+            return false;
+        }
+        return true;
+    }
 
     @Override
-    public void Player() {
-
+    public void PlayRounds() {
+        while(GameOver()==false) {
+            Integer x = 0, y = 0;
+            TTT_Player tp = (TTT_Player) playerList.poll();
+            tp.Input(x, y);
+            while (!Valid(x, y)) {
+                System.out.println("Invalid input, please input again");
+                tp.Input(x, y);
+            }
+            playerList.add(tp);
+        }
+    }
+    //false==game not over
+    public boolean GameOver(){
+        return false;
     }
 
 

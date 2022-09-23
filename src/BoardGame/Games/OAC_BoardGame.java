@@ -25,7 +25,7 @@ public class OAC_BoardGame extends BoardGame{
     }
 
     @Override
-    public void Player() {
+    public void PlayRounds() {
 
     }
 }

@@ -1,5 +1,7 @@
 package BoardGame.Player;
 
+import java.util.Scanner;
+
 public class TTT_Player extends Player{
 
     public TTT_Player() {
@@ -11,8 +13,11 @@ public class TTT_Player extends Player{
     }
 
     @Override
-    public boolean ValidMove(int x, int y) {
-        return false;
+    public void Input(Integer x, Integer y) {
+        InitScanner();
+        x=GetScanner().nextInt();
+        y=GetScanner().nextInt();
     }
+
 
 }

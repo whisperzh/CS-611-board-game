@@ -12,8 +12,9 @@ public class OAC_Player extends Player{
     }
 
     @Override
-    public boolean ValidMove(int x, int y) {
-        return false;
+    public void Input(Integer x, Integer y) {
+
     }
+
 
 }

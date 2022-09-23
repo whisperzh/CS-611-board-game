@@ -1,18 +1,16 @@
 package BoardGame.Games;
 
 import BoardGame.Pieces.Piece;
-import BoardGame.Player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 
 public abstract class BoardGame {
     protected int size;
     protected int playerNum;
-    protected Queue<Player> playerList;
+    protected Queue playerList;
+    protected int rounds;
     protected char [][] boardGraphicsGrid;
-    protected List<List<Piece>> boardLogicGrid;
+    protected Piece[][] boardLogicGrid;
     public int GetPlayerNum(){
         return playerList.size();
     }
@@ -21,6 +19,7 @@ public abstract class BoardGame {
     {
         size=3;
         playerNum=2;
+        rounds =1;
         constructGraphicsGrid();
         InitPlayer();
         constructLogicGrid();
@@ -28,6 +27,8 @@ public abstract class BoardGame {
 
     public BoardGame(int boardSize) {
         size=boardSize;
+        playerNum=2;
+        rounds =1;
         constructGraphicsGrid();
         InitPlayer();
         constructLogicGrid();
@@ -37,7 +38,7 @@ public abstract class BoardGame {
 
     public abstract void constructLogicGrid();
 
-    public  abstract void Player();
+    public abstract void PlayRounds();
 
     public void constructGraphicsGrid(){
         int row=1+size*2;
