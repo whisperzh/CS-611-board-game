@@ -2,26 +2,30 @@ package BoardGame.Pieces;
 
 import BoardGame.Player.Player;
 
-public abstract class Piece {
-    private boolean ocupied;
+public class Piece {
+    private boolean isActivated;
     public Piece(){}
-    protected Player owner;
-    private char icon;
-    public char getIcon() {
-        return icon;
+    private int posx,posy;
+    private char pieceType;
+
+    public boolean isActivated() {
+        return isActivated;
     }
 
-    public void setIcon(char icon) {
-        if(!ocupied)
-            this.icon = icon;
+    public void setActivated(boolean activated) {
+        isActivated = activated;
     }
 
-    public boolean isOcupied() {
-        return ocupied;
+    public char getPieceType() {
+        return pieceType;
     }
 
-    public void setOcupied(boolean ocupied) {
-        this.ocupied = ocupied;
+    public void setPieceType(char pieceType) {
+        this.pieceType = pieceType;
     }
 
+    public void activate(char teamPieceType) {
+        isActivated=true;
+        pieceType=teamPieceType;
+    }
 }

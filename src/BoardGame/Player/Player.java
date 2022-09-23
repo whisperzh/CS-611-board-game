@@ -1,16 +1,21 @@
 package BoardGame.Player;
 
+import BoardGame.Team.Team;
+
 import java.util.Scanner;
 
-public abstract class Player {
+public class Player {
     protected String name;
-
+    private int inputBuffer;
     private int winTimes;
+    private Team team;
 
     private Scanner scanner;
 
-    public Player(){
+    public Player(Team team){
         name=new String("Player");
+        this.team=team;
+        initScanner();
     }
     public Player(String name)
     {
@@ -27,9 +32,17 @@ public abstract class Player {
         return name;
     }
 
-    public abstract void Input(Integer x, Integer y);
+    public int input()
+    {
+        inputBuffer=scanner.nextInt();
+        return inputBuffer;
+    }
 
-    public void InitScanner(){
+    public void move(){
+        Team.getBoard().setGrid(inputBuffer,team.getTeamPieceType());
+    }
+
+    public void initScanner(){
         if(scanner==null)
             scanner=new Scanner(System.in);
     }

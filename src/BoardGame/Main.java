@@ -1,7 +1,6 @@
 package BoardGame;
 
-import BoardGame.Games.BoardGame;
-import BoardGame.Games.TTT_BoardGame;
+import BoardGame.Room.Room;
 
 import java.util.Scanner;
 
@@ -21,6 +20,8 @@ public class Main {
         while (GameMode!=-1)
         {
             System.out.println("win!");
+            Room r=new Room();
+            r.play();
             GameMode=sc.nextInt();
         }
         System.out.println("GoodBye");
