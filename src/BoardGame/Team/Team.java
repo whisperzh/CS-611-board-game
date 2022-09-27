@@ -7,10 +7,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Team {
-    private Queue<Player> playerQueue;
-    private int score;
+    protected Queue playerQueue;
+    protected int score;
     public static Board board;
-    private String name;
+    protected String name;
     protected char teamPieceType;
     private boolean status;
 
@@ -78,7 +78,7 @@ public class Team {
     }
 
     public void react(){
-        Player p=playerQueue.poll();
+        Player p=(Player) playerQueue.poll();
         board.displayBoardIndex();
         System.out.println(p.getName()+"\'s turn:");
         int ip=p.input();

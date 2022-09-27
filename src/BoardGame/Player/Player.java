@@ -6,14 +6,9 @@ import java.util.Scanner;
 
 public class Player {
     protected String name;
-
-    public int getInputBuffer() {
-        return inputBuffer;
-    }
-
-    private int inputBuffer;
-    private Team team;
-    private Scanner scanner;
+    protected int inputPositionBuffer;
+    protected Team team;
+    protected Scanner scanner;
 
     public Player(Team team){
         name=new String("Player");
@@ -37,13 +32,17 @@ public class Player {
     public int input()
     {
         System.out.println("please choose a grid");
-        inputBuffer=scanner.nextInt();
-        Team.getBoard().setInputBuffer(inputBuffer);
-        return inputBuffer;
+        inputPositionBuffer =scanner.nextInt();
+        Team.getBoard().setInputBuffer(inputPositionBuffer);
+        return inputPositionBuffer;
     }
 
     public void move(){
-        Team.getBoard().setGrid(inputBuffer,team.getTeamPieceType());
+//        Team.getBoard().setGrid(inputBuffer,team.getTeamPieceType());
+    }
+
+    public int getInputPositionBuffer() {
+        return inputPositionBuffer;
     }
 
     public void initScanner(){

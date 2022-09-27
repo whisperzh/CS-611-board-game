@@ -2,8 +2,6 @@ package BoardGame.Boards;
 
 import BoardGame.Pieces.Piece;
 
-import java.util.Stack;
-
 public class Board {
 
     protected int size;
@@ -12,14 +10,19 @@ public class Board {
     protected char [][] indexDisplayboard;
     protected Piece[][] boardLogicGrid;
     private char currPieceType;
-    private int inputBuffer;
-    private int occupation;// flag to judge draw
+    protected int inputBuffer;
+    protected char inputPieceTypeBuffer;
+
+    protected int occupation;// flag to judge draw
 
     public void setInputBuffer(int inputBuffer) {
         this.inputBuffer = inputBuffer;
     }
 
-
+    public void setInputBuffer(int inputBuffer,char inputPieceTypeBuffer) {
+        this.inputBuffer = inputBuffer;
+        this.inputPieceTypeBuffer=inputPieceTypeBuffer;
+    }
 
     public Board()
     {
@@ -157,11 +160,11 @@ public class Board {
         return currPieceType;
     }
 
-    public void setGrid(int x, char teamPieceType) {
+    public void setGrid(int x, char targetPieceType) {
         int row=(x-1)/size;
         int col=(x-1)%size;
-        boardLogicGrid[row][col].activate(teamPieceType);
-        currPieceType=teamPieceType;
+        boardLogicGrid[row][col].activate(targetPieceType);
+        currPieceType=targetPieceType;
         updateGraphicalGrid(row,col);
         occupation++;
     }
@@ -171,6 +174,7 @@ public class Board {
         int mappedy=3*y+1;
         boardGraphicalGrid[mappedx][mappedy]=currPieceType;
     }
+
 
     public boolean validSet(int x){
         if(x<1||x>size*size) {
@@ -286,6 +290,11 @@ public class Board {
     public boolean stalemateCheck() {
         if(occupation==size*size)
             return true;
+        return false;
+    }
+
+    public boolean boardGameWinnerJudgment()
+    {
         return false;
     }
 }

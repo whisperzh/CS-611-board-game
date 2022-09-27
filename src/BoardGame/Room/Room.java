@@ -3,6 +3,7 @@ package BoardGame.Room;
 import BoardGame.Boards.Board;
 import BoardGame.Boards.OAC_Board;
 import BoardGame.Boards.TTT_Board;
+import BoardGame.Team.OAC_Team;
 import BoardGame.Team.TTT_Team;
 import BoardGame.Team.Team;
 
@@ -22,7 +23,7 @@ public class Room {
         teamQueue=new LinkedList<>();
         gameSize=3;
         rounds=0;
-        Team.setBoard(new Board());
+
     }
 
     public Scanner getScanner() {
@@ -46,6 +47,7 @@ public class Room {
 
         if(GameMode==1)
         {
+            Team.setBoard(new TTT_Board());
             teamQueue.clear();
             System.out.println("please choose the size of the game the minimal size of game is 3");
             int size=getScanner().nextInt();
@@ -58,7 +60,12 @@ public class Room {
             gameSize=Team.board.getSize();
         }else if(GameMode==2)
         {
+            Team.setBoard(new Board());
+            teamQueue.clear();
             Team.setBoard(new OAC_Board());
+            teamQueue.add(new OAC_Team("Order"));
+            teamQueue.add(new OAC_Team("Chaos"));
+            gameSize=Team.board.getSize();
         }
 
     }
@@ -88,7 +95,7 @@ public class Room {
     }
 
     public boolean Judge(){
-        if(Team.getBoard().currNumOfPieceinAllDir()>=gameSize)
+        if(Team.getBoard().boardGameWinnerJudgment())
         {
             System.out.println("Game Over");
             return true;

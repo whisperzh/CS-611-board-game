@@ -4,7 +4,7 @@ import BoardGame.Player.Player;
 
 public class Piece {
     private boolean isActivated;
-    private char pieceType;
+    private char pieceType=' ';
 
     public int getDisplayIndex() {
         return displayIndex;
@@ -38,7 +38,7 @@ public class Piece {
     }
 
     public void reset(){
-        isActivated=false;
+        setActivated(false);
         pieceType=' ';
     }
 

@@ -22,6 +22,12 @@ public class TTT_Board extends Board {
 
     }
 
+    public boolean boardGameWinnerJudgment()
+    {
+        if(currNumOfPieceinAllDir()>=size)
+            return true;
+        return false;
+    }
 
 }
 
