@@ -4,9 +4,17 @@ import BoardGame.Player.Player;
 
 public class Piece {
     private boolean isActivated;
-    public Piece(){}
-    private int posx,posy;
     private char pieceType;
+
+    public int getDisplayIndex() {
+        return displayIndex;
+    }
+
+    private int displayIndex;
+
+    public Piece(int displayIndex){
+        this.displayIndex=displayIndex;
+    }
 
     public boolean isActivated() {
         return isActivated;
@@ -14,6 +22,11 @@ public class Piece {
 
     public void setActivated(boolean activated) {
         isActivated = activated;
+    }
+
+    public void activate(char teamPieceType) {
+        isActivated=true;
+        pieceType=teamPieceType;
     }
 
     public char getPieceType() {
@@ -24,8 +37,9 @@ public class Piece {
         this.pieceType = pieceType;
     }
 
-    public void activate(char teamPieceType) {
-        isActivated=true;
-        pieceType=teamPieceType;
+    public void reset(){
+        isActivated=false;
+        pieceType=' ';
     }
+
 }

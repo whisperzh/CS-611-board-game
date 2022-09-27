@@ -9,31 +9,44 @@ import java.util.Queue;
 public class Team {
     private Queue<Player> playerQueue;
     private int score;
-
-    public static void setBoard(Board board) {
-        Team.board = board;
-    }
-
-    static Board board;
+    public static Board board;
     private String name;
-    private char teamPieceType;
+    protected char teamPieceType;
     private boolean status;
 
-    public char getTeamPieceType() {
-        return teamPieceType;
-    }
     public Team() {
         score=0;
         initPlayerQueue();
         addPlayer(new Player(this));
     }
 
-    public Team(char t) {
+    public Team(char t,String name) {
         score=0;
         initPlayerQueue();
+        this.name=name;
         teamPieceType=t;
         addPlayer(new Player(this));
     }
+    public Team(String name)
+    {
+        score=0;
+        initPlayerQueue();
+        this.name=name;
+        addPlayer(new Player(this));
+    }
+
+    public static void setBoard(Board board) {
+        Team.board = board;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public char getTeamPieceType() {
+        return teamPieceType;
+    }
+
     public void initPlayerQueue(){
         playerQueue=new LinkedList();
     }
@@ -52,6 +65,7 @@ public class Team {
     }
 
     private void win() {
+        score++;
         status=true;
     }
 
@@ -65,9 +79,12 @@ public class Team {
 
     public void react(){
         Player p=playerQueue.poll();
+        board.displayBoardIndex();
+        System.out.println(p.getName()+"\'s turn:");
         int ip=p.input();
-        while (!valid(ip))
+        while (!valid(ip)){
             ip=p.input();
+        }
         p.move();
         playerQueue.add(p);
         board.printGrid();
@@ -75,6 +92,10 @@ public class Team {
 
     public void reset(){
 
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

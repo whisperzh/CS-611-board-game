@@ -6,10 +6,13 @@ import java.util.Scanner;
 
 public class Player {
     protected String name;
-    private int inputBuffer;
-    private int winTimes;
-    private Team team;
 
+    public int getInputBuffer() {
+        return inputBuffer;
+    }
+
+    private int inputBuffer;
+    private Team team;
     private Scanner scanner;
 
     public Player(Team team){
@@ -17,12 +20,11 @@ public class Player {
         this.team=team;
         initScanner();
     }
+
     public Player(String name)
     {
         this.name=name;
     }
-
-    public void Input(int x,int y){}
 
     public void setName(String name) {
         this.name = name;
@@ -34,7 +36,9 @@ public class Player {
 
     public int input()
     {
+        System.out.println("please choose a grid");
         inputBuffer=scanner.nextInt();
+        Team.getBoard().setInputBuffer(inputBuffer);
         return inputBuffer;
     }
 
@@ -47,17 +51,4 @@ public class Player {
             scanner=new Scanner(System.in);
     }
 
-    public Scanner GetScanner(){
-        return scanner;
-    }
-
-    public int getWinTimes() {
-        return winTimes;
-    }
-
-    public void setWinTimes(int winTimes) {
-        this.winTimes = winTimes;
-    }
-
-    public void WinTimeIncrement(){winTimes++;}
 }
