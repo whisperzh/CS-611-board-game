@@ -14,7 +14,10 @@ public class OAC_Player extends Player{
         System.out.println("please choose a grid");
         inputPositionBuffer =scanner.nextInt();
         System.out.println("please choose a piece type (O/X)");
-        inputTypeBuffer =scanner.next().charAt(0);
+        char ch=scanner.next().charAt(0);
+        if(!Character.isUpperCase(ch))
+            ch=Character.toUpperCase(ch);
+        inputTypeBuffer = ch;
         OAC_Team.getBoard().setInputBuffer(inputPositionBuffer,inputTypeBuffer);
         return inputPositionBuffer;
     }

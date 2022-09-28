@@ -15,13 +15,13 @@ public class Room {
 
     private Team winnerTeam;
     private Queue<Team> teamQueue;
-    private int gameSize;
+//    private int gameSize;
     private int rounds;
     private Scanner scanner;
 
     public Room() {
         teamQueue=new LinkedList<>();
-        gameSize=3;
+//        gameSize=3;
         rounds=0;
 
     }
@@ -57,15 +57,15 @@ public class Room {
                 Team.setBoard(new TTT_Board(size));
             teamQueue.add(new TTT_Team('O',"Team O"));
             teamQueue.add(new TTT_Team('X',"Team X"));
-            gameSize=Team.board.getSize();
+//            gameSize=Team.board.getSize();
         }else if(GameMode==2)
         {
-            Team.setBoard(new Board());
+            Team.setBoard(new OAC_Board());
             teamQueue.clear();
             Team.setBoard(new OAC_Board());
             teamQueue.add(new OAC_Team("Order"));
             teamQueue.add(new OAC_Team("Chaos"));
-            gameSize=Team.board.getSize();
+//            gameSize=Team.board.getSize();
         }
 
     }
