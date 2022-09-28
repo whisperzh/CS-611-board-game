@@ -1,7 +1,7 @@
 package BoardGame.Boards;
 
 import BoardGame.Pieces.Piece;
-import BoardGame.Team.Team;
+import BoardGame.Teams.Team;
 
 public class Board {
 
@@ -16,15 +16,6 @@ public class Board {
     protected char inputPieceTypeBuffer;
 
     protected int occupation;// flag to judge draw
-
-    public void setInputBuffer(int inputBuffer) {
-        this.inputBuffer = inputBuffer;
-    }
-
-    public void setInputBuffer(int inputBuffer,char inputPieceTypeBuffer) {
-        this.inputBuffer = inputBuffer;
-        this.inputPieceTypeBuffer=inputPieceTypeBuffer;
-    }
 
     public Board()
     {
@@ -42,6 +33,15 @@ public class Board {
         occupation=0;
         constructLogicGrid();
         constructGraphicsGrid();
+    }
+
+    public void setInputBuffer(int inputBuffer) {
+        this.inputBuffer = inputBuffer;
+    }
+
+    public void setInputBuffer(int inputBuffer,char inputPieceTypeBuffer) {
+        this.inputBuffer = inputBuffer;
+        this.inputPieceTypeBuffer=inputPieceTypeBuffer;
     }
 
     public void constructLogicGrid(){
@@ -130,8 +130,10 @@ public class Board {
     }
 
     public void printGrid(){
+        System.out.println("outputs:");
         int m= boardGraphicalGrid.length;
         int n= boardGraphicalGrid[0].length;
+
         for(int i=0;i<m;i++)
         {
             for(int j=0;j<n;j++)
@@ -143,6 +145,7 @@ public class Board {
 
 
     }
+
     public void displayBoardIndex(){
         int m= indexDisplayBoard.length;
         int n= indexDisplayBoard[0].length;
@@ -185,7 +188,6 @@ public class Board {
         int mappedy=3*y+1;
         boardGraphicalGrid[mappedx][mappedy]=currPieceType;
     }
-
 
     public boolean validSet(int x){
         if(x<1||x>size*size) {

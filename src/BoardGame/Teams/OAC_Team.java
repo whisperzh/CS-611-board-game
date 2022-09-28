@@ -1,9 +1,9 @@
-package BoardGame.Team;
-import BoardGame.Player.OAC_Player;
+package BoardGame.Teams;
+import BoardGame.Players.OAC_Player;
 
 
 import java.util.LinkedList;
-
+@SuppressWarnings("unchecked")
 public class OAC_Team extends Team{
 
     public OAC_Team(String name) {
@@ -17,6 +17,7 @@ public class OAC_Team extends Team{
         getBoard().setCurrentTeam(this);
         OAC_Player p= (OAC_Player) playerQueue.poll();
         board.displayBoardIndex();
+        System.out.println(name+":");
         System.out.println(p.getName()+"\'s turn:");
         int ip=p.input();
         while (!valid(ip)){

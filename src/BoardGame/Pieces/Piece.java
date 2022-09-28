@@ -1,7 +1,5 @@
 package BoardGame.Pieces;
 
-import BoardGame.Player.Player;
-
 public class Piece {
     private boolean isActivated;
     private char pieceType=' ';

@@ -1,7 +1,7 @@
-package BoardGame.Player;
+package BoardGame.Players;
 
-import BoardGame.Team.TTT_Team;
-import BoardGame.Team.Team;
+import BoardGame.Teams.TTT_Team;
+import BoardGame.Teams.Team;
 
 public class TTT_Player extends Player{
 
@@ -15,6 +15,7 @@ public class TTT_Player extends Player{
     {
         System.out.println("please choose a grid");
         inputPositionBuffer =scanner.nextInt();
+        System.out.println("Your Input:"+inputPositionBuffer);
         TTT_Team.getBoard().setInputBuffer(inputPositionBuffer);
         return inputPositionBuffer;
     }

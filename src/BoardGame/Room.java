@@ -1,16 +1,15 @@
-package BoardGame.Room;
+package BoardGame;
 
-import BoardGame.Boards.Board;
 import BoardGame.Boards.OAC_Board;
 import BoardGame.Boards.TTT_Board;
-import BoardGame.Team.OAC_Team;
-import BoardGame.Team.TTT_Team;
-import BoardGame.Team.Team;
+import BoardGame.Teams.OAC_Team;
+import BoardGame.Teams.TTT_Team;
+import BoardGame.Teams.Team;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-
+@SuppressWarnings("unchecked")
 public class Room {
 
     private Team winnerTeam;
@@ -44,7 +43,7 @@ public class Room {
             GameMode = getScanner().nextInt();
 
         }
-
+        System.out.println("Your Input: ["+Integer.toString(GameMode) +"]");
         if(GameMode==1)
         {
             Team.setBoard(new TTT_Board());
@@ -85,13 +84,23 @@ public class Room {
                 String result=getScanner().next();
                 if(result.equalsIgnoreCase("y")||result.equalsIgnoreCase("yes"))
                 {
+                    System.out.println("Input: yes");
                     Team.getBoard().reset();
                 }else
                 {
+                    System.out.println("Input: no");
                     break;
                 }
             }
         }
+        System.out.println("Thank you for playing!");
+        int stm=rounds;
+        for(var team: teamQueue) {
+            System.out.println(team.getName() + " won " + team.getScore() + " times.");
+            stm-=team.getScore();
+        }
+        System.out.println("There were " + stm + " stalemates.");
+
     }
 
     public boolean Judge(){

@@ -1,11 +1,11 @@
-package BoardGame.Team;
+package BoardGame.Teams;
 
 import BoardGame.Boards.Board;
-import BoardGame.Player.Player;
+import BoardGame.Players.Player;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
+@SuppressWarnings("unchecked")
 public class Team {
     protected Queue playerQueue;
     protected int score;

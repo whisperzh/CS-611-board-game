@@ -1,10 +1,9 @@
-package BoardGame.Team;
+package BoardGame.Teams;
 
-import BoardGame.Player.Player;
-import BoardGame.Player.TTT_Player;
+import BoardGame.Players.TTT_Player;
 
 import java.util.LinkedList;
-
+@SuppressWarnings("unchecked")
 public class TTT_Team extends Team{
     public TTT_Team() {
         score=0;
@@ -23,6 +22,7 @@ public class TTT_Team extends Team{
         getBoard().setCurrentTeam(this);
         TTT_Player p= (TTT_Player) playerQueue.poll();
         board.displayBoardIndex();
+        System.out.println(name+":");
         System.out.println(p.getName()+"\'s turn:");
         int ip=p.input();
         while (!valid(ip)){

@@ -1,7 +1,7 @@
-package BoardGame.Player;
+package BoardGame.Players;
 
-import BoardGame.Team.OAC_Team;
-import BoardGame.Team.Team;
+import BoardGame.Teams.OAC_Team;
+import BoardGame.Teams.Team;
 
 public class OAC_Player extends Player{
     private char inputTypeBuffer;
@@ -18,6 +18,7 @@ public class OAC_Player extends Player{
         if(!Character.isUpperCase(ch))
             ch=Character.toUpperCase(ch);
         inputTypeBuffer = ch;
+        System.out.println("Your Input: position:"+inputPositionBuffer+" symbol:"+inputTypeBuffer);
         OAC_Team.getBoard().setInputBuffer(inputPositionBuffer,inputTypeBuffer);
         return inputPositionBuffer;
     }

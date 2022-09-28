@@ -1,6 +1,6 @@
-package BoardGame.Player;
+package BoardGame.Players;
 
-import BoardGame.Team.Team;
+import BoardGame.Teams.Team;
 
 import java.util.Scanner;
 
@@ -31,9 +31,9 @@ public class Player {
 
     public int input()
     {
-        System.out.println("please choose a grid");
-        inputPositionBuffer =scanner.nextInt();
-        Team.getBoard().setInputBuffer(inputPositionBuffer);
+//        System.out.println("please choose a grid");
+//        inputPositionBuffer =scanner.nextInt();
+//        Team.getBoard().setInputBuffer(inputPositionBuffer);
         return inputPositionBuffer;
     }
 
