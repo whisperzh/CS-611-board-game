@@ -20,6 +20,7 @@ public class TTT_Team extends Team{
         addPlayer(new TTT_Player(this));
     }
     public void react(){
+        getBoard().setCurrentTeam(this);
         TTT_Player p= (TTT_Player) playerQueue.poll();
         board.displayBoardIndex();
         System.out.println(p.getName()+"\'s turn:");

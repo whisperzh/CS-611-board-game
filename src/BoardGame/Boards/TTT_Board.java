@@ -13,6 +13,7 @@ public class TTT_Board extends Board {
 
     @Override
     public void constructLogicGrid() {
+
         boardLogicGrid=new TTT_Piece[size][size];
         for(int i=0;i<size;i++)
         {

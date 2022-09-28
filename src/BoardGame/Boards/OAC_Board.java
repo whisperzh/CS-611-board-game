@@ -27,6 +27,15 @@ public class OAC_Board extends Board{
         this.inputPieceTypeBuffer=inputPieceTypeBuffer;
     }
 
+    public void setGrid(int x, char targetPieceType) {
+        int row=(x-1)/size;
+        int col=(x-1)%size;
+        boardLogicGrid[row][col].activate(targetPieceType);
+        currPieceType=targetPieceType;
+        updateGraphicalGrid(row,col);
+        occupation++;
+    }
+
     public boolean boardGameWinnerJudgment()
     {
         if(currNumOfPieceinAllDir()>=size-1)

@@ -1,15 +1,17 @@
 package BoardGame.Boards;
 
 import BoardGame.Pieces.Piece;
+import BoardGame.Team.Team;
 
 public class Board {
 
     protected int size;
     protected int playerNum;
     protected char [][] boardGraphicalGrid;
-    protected char [][] indexDisplayboard;
+    protected char [][] indexDisplayBoard;
     protected Piece[][] boardLogicGrid;
-    private char currPieceType;
+    protected Team currentTeam;
+    protected char currPieceType;
     protected int inputBuffer;
     protected char inputPieceTypeBuffer;
 
@@ -80,30 +82,30 @@ public class Board {
             }
         }
 
-        indexDisplayboard=new char[row][col];
+        indexDisplayBoard =new char[row][col];
 
         for (int i=0;i<row;i++)
         {
             for(int j=0;j<col;j++)
             {
-                indexDisplayboard[i][j]=' ';
+                indexDisplayBoard[i][j]=' ';
             }
         }
         for(int r=0;r<row-1;r+=2) {
             for (int i = 0; i < col-1; i += 3) {
-                indexDisplayboard[r][i] = '+';
-                indexDisplayboard[r+2][i] = '+';
-                indexDisplayboard[r][i+3] = '+';
-                indexDisplayboard[r+2][i+3] = '+';
+                indexDisplayBoard[r][i] = '+';
+                indexDisplayBoard[r+2][i] = '+';
+                indexDisplayBoard[r][i+3] = '+';
+                indexDisplayBoard[r+2][i+3] = '+';
 
-                indexDisplayboard[r+1][i] = '|';
-                indexDisplayboard[r+1][i+3] = '|';
+                indexDisplayBoard[r+1][i] = '|';
+                indexDisplayBoard[r+1][i+3] = '|';
 
-                indexDisplayboard[r][i+1] = '-';
-                indexDisplayboard[r][i+2] = '-';
+                indexDisplayBoard[r][i+1] = '-';
+                indexDisplayBoard[r][i+2] = '-';
 
-                indexDisplayboard[r+2][i+1] = '-';
-                indexDisplayboard[r+2][i+2] = '-';
+                indexDisplayBoard[r+2][i+1] = '-';
+                indexDisplayBoard[r+2][i+2] = '-';
             }
         }
 
@@ -114,11 +116,11 @@ public class Board {
                 int mapy=3*j+1;
                 int idx=boardLogicGrid[i][j].getDisplayIndex();
                 if(idx<=9)
-                    indexDisplayboard[mapx][mapy]=(char) (idx+'0');
+                    indexDisplayBoard[mapx][mapy]=(char) (idx+'0');
                 else{
 
-                    indexDisplayboard[mapx][mapy]=(char) (idx/10+'0');
-                    indexDisplayboard[mapx][mapy+1]=(char) (idx%10+'0');
+                    indexDisplayBoard[mapx][mapy]=(char) (idx/10+'0');
+                    indexDisplayBoard[mapx][mapy+1]=(char) (idx%10+'0');
                     }
             }
     }
@@ -142,13 +144,13 @@ public class Board {
 
     }
     public void displayBoardIndex(){
-        int m= indexDisplayboard.length;
-        int n= indexDisplayboard[0].length;
+        int m= indexDisplayBoard.length;
+        int n= indexDisplayBoard[0].length;
         for(int i=0;i<m;i++)
         {
             for(int j=0;j<n;j++)
             {
-                System.out.print(indexDisplayboard[i][j]);
+                System.out.print(indexDisplayBoard[i][j]);
             }
             System.out.println();
         }
@@ -156,7 +158,16 @@ public class Board {
 
     }
 
-    public char getCurrType() {
+    public Team getCurrentTeam()
+    {
+        return currentTeam;
+    }
+
+    public void setCurrentTeam(Team currentTeam) {
+        this.currentTeam = currentTeam;
+    }
+
+    public char getCurrPieceType() {
         return currPieceType;
     }
 
@@ -169,7 +180,7 @@ public class Board {
         occupation++;
     }
 
-    private void updateGraphicalGrid(int x,int y) {
+    protected void updateGraphicalGrid(int x,int y) {
         int mappedx=2*x+1;
         int mappedy=3*y+1;
         boardGraphicalGrid[mappedx][mappedy]=currPieceType;

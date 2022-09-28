@@ -60,11 +60,11 @@ public class Team {
     }
 
     public void doCheckOut(){
-        if(board.getCurrType()==teamPieceType)
+        if(board.getCurrPieceType()==teamPieceType)
             win();
     }
 
-    private void win() {
+    public void win() {
         score++;
         status=true;
     }
